@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .services-hero {
+        padding: 60px 20px;
+        text-align: center;
+        background: linear-gradient(135deg, #212529, #343a40);
+        color: white;
+    }
+
+    .service-card {
+        border: none;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+    }
+
+    .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        color: #ffc107;
+        margin-bottom: 15px;
+    }
+
+    .service-card .btn {
+        border-radius: 25px;
+    }
+
+</style>
+
+<section class="services-hero">
+    <h1 class="fw-bold">Our Services</h1>
+    <p class="mb-0">Choose how you'd like to enjoy My Restaurant</p>
+</section>
+
+<div class="container py-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card service-card text-center p-4">
+                <i class="bi bi-shop service-icon"></i>
+                <h4>Dine In</h4>
+                <p class="text-muted">
+                    Enjoy a warm, welcoming atmosphere and table service right at our restaurant.
+                </p>
+                <a href="{% url 'dine_in' %}" class="btn btn-warning mt-2">Learn More</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center p-4">
+                <i class="bi bi-truck service-icon"></i>
+                <h4>Delivery</h4>
+                <p class="text-muted">
+                    Get your favorite dishes delivered fresh and fast, right to your door.
+                </p>
+                <a href="{% url 'delivery' %}" class="btn btn-warning mt-2">Learn More</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center p-4">
+                <i class="bi bi-envelope service-icon"></i>
+                <h4>Contact Us</h4>
+                <p class="text-muted">
+                    Have questions, feedback, or a reservation request? Get in touch.
+                </p>
+                <a href="{% url 'contact' %}" class="btn btn-warning mt-2">Contact</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .menu-section {
+        padding: 60px 0;
+    }
+
+    .veg-dot, .nonveg-dot {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border: 2px solid;
+        padding: 2px;
+        margin-right: 8px;
+    }
+
+    .veg-dot {
+        border-color: #28a745;
+    }
+
+    .veg-dot::after {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: #28a745;
+        border-radius: 50%;
+    }
+
+    .nonveg-dot {
+        border-color: #dc3545;
+    }
+
+    .nonveg-dot::after {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: #dc3545;
+        border-radius: 50%;
+    }
+
+    .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 16px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .menu-item:last-child {
+        border-bottom: none;
+    }
+
+    .menu-item-name {
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .menu-item-desc {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .menu-item-price {
+        font-weight: 700;
+        color: #212529;
+        white-space: nowrap;
+        margin-left: 20px;
+    }
+
+    .menu-tabs .nav-link {
+        border-radius: 25px;
+        font-weight: 600;
+        margin-right: 10px;
+        color: #212529;
+    }
+
+    .menu-tabs .nav-link.active {
+        background-color: #ffc107;
+        color: #212529;
+    }
+
+</style>
+
+<section class="menu-section">
+    <div class="container">
+
+        <h2 class="text-center fw-bold mb-4">Our Menu</h2>
+
+        <!-- Tabs -->
+        <ul class="nav menu-tabs justify-content-center mb-4" id="menuTab" role="tablist">
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="veg-tab" data-bs-toggle="tab"
+                        data-bs-target="#veg" type="button" role="tab">
+                    <span class="veg-dot"></span> Veg
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="nonveg-tab" data-bs-toggle="tab"
+                        data-bs-target="#nonveg" type="button" role="tab">
+                    <span class="nonveg-dot"></span> Non-Veg
+                </button>
+            </li>
+
+        </ul>
+
+        <div class="tab-content">
+
+            <!-- VEG -->
+            <div class="tab-pane fade show active" id="veg" role="tabpanel">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="veg-dot"></span>Paneer Butter Masala</p>
+                                <p class="menu-item-desc">Cottage cheese cubes in a rich, creamy tomato gravy.</p>
+                            </div>
+                            <div class="menu-item-price">₹220</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="veg-dot"></span>Veg Biryani</p>
+                                <p class="menu-item-desc">Fragrant basmati rice cooked with mixed vegetables and spices.</p>
+                            </div>
+                            <div class="menu-item-price">₹180</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="veg-dot"></span>Dal Makhani</p>
+                                <p class="menu-item-desc">Slow-cooked black lentils with butter and cream.</p>
+                            </div>
+                            <div class="menu-item-price">₹160</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="veg-dot"></span>Masala Dosa</p>
+                                <p class="menu-item-desc">Crispy rice crepe filled with spiced potato masala.</p>
+                            </div>
+                            <div class="menu-item-price">₹120</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- NON-VEG -->
+            <div class="tab-pane fade" id="nonveg" role="tabpanel">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="nonveg-dot"></span>Butter Chicken</p>
+                                <p class="menu-item-desc">Tandoori chicken simmered in a buttery tomato sauce.</p>
+                            </div>
+                            <div class="menu-item-price">₹280</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="nonveg-dot"></span>Chicken Biryani</p>
+                                <p class="menu-item-desc">Aromatic basmati rice layered with marinated chicken.</p>
+                            </div>
+                            <div class="menu-item-price">₹240</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="nonveg-dot"></span>Mutton Rogan Josh</p>
+                                <p class="menu-item-desc">Tender mutton cooked in a fragrant Kashmiri-style curry.</p>
+                            </div>
+                            <div class="menu-item-price">₹320</div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div>
+                                <p class="menu-item-name"><span class="nonveg-dot"></span>Fish Tikka</p>
+                                <p class="menu-item-desc">Chargrilled marinated fish with mint chutney.</p>
+                            </div>
+                            <div class="menu-item-price">₹260</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
